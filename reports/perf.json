@@ -1,0 +1,44 @@
+{
+  "configuration": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.2",
+    "cpu_logiques": 24,
+    "ram_go": 16.8
+  },
+  "requete_isolee": {
+    "p50_ms": 4.154150024987757,
+    "p95_ms": 25.81592499336694,
+    "debit_sequentiel_req_s": 141.05229809112916
+  },
+  "charge_progressive": [
+    {
+      "clients_simultanes": 1,
+      "requetes": 100,
+      "debit_req_s": 126.31275264773524,
+      "p50_ms": 4.163900011917576,
+      "p95_ms": 26.040204978198744
+    },
+    {
+      "clients_simultanes": 2,
+      "requetes": 200,
+      "debit_req_s": 240.63114661503585,
+      "p50_ms": 7.527750014560297,
+      "p95_ms": 10.565110016614197
+    },
+    {
+      "clients_simultanes": 4,
+      "requetes": 400,
+      "debit_req_s": 245.42704981142913,
+      "p50_ms": 16.038150002714247,
+      "p95_ms": 20.295754994731396
+    },
+    {
+      "clients_simultanes": 8,
+      "requetes": 800,
+      "debit_req_s": 251.02465912742403,
+      "p50_ms": 31.389700016006827,
+      "p95_ms": 40.174979987205
+    }
+  ],
+  "protocole": "TestClient FastAPI en processus (HTTP simulé, sans réseau), 300 requêtes isolées après échauffement, puis 1/2/4/8 clients en threads x 100 requêtes"
+}

@@ -1,0 +1,45 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Style (Ruff)
+        run: ruff check .
+      - name: Tests + couverture (un échec rend le workflow rouge)
+        run: pytest --cov=app --cov-report=term-missing --cov-report=xml --cov-fail-under=85 -q
+      - name: Archiver la couverture
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-xml
+          path: coverage.xml
+
+  performance:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: PYTHONPATH=. python scripts/run_experiments.py && PYTHONPATH=. python scripts/perf_report.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: reports/

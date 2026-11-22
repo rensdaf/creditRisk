@@ -1,0 +1,97 @@
+{
+  "code_version": "non-versionné",
+  "modele": "LogisticRegression (StandardScaler + class_weight=balanced)",
+  "version_modele": "1.0.0",
+  "bibliotheques": {
+    "python": "3.12.3",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6"
+  },
+  "graine": 42,
+  "seuil_decision": 0.5134625452042959,
+  "dataset": {
+    "n": 6000,
+    "seed": 42,
+    "synthetique": true
+  },
+  "dataset_stats": {
+    "lignes": 6000,
+    "taux_defaut": 0.22116666666666668,
+    "validation_lignes": 1200,
+    "validation_defauts": 265
+  },
+  "metrics_validation": {
+    "accuracy": 0.8075,
+    "precision": 0.5502958579881657,
+    "recall": 0.7018867924528301,
+    "f1": 0.6169154228855721,
+    "roc_auc": 0.8294622137019474,
+    "pr_auc": 0.6227588175563417,
+    "fpr": 0.1625668449197861,
+    "fnr": 0.2981132075471698,
+    "tp": 186,
+    "tn": 783,
+    "fp": 152,
+    "fn": 79
+  },
+  "tolerances": {
+    "recall": 0.05,
+    "f1": 0.05,
+    "roc_auc": 0.03
+  },
+  "tolerance_probabilite": 0.05,
+  "profils_reference": [
+    {
+      "nom": "profil_typique",
+      "entree": {
+        "age": 35,
+        "revenu_mensuel": 250000,
+        "montant_credit": 1000000,
+        "duree_mois": 12,
+        "anciennete_activite": 4
+      },
+      "probabilite": 0.47820663651289663
+    },
+    {
+      "nom": "profil_risque_faible",
+      "entree": {
+        "age": 50,
+        "revenu_mensuel": 500000,
+        "montant_credit": 500000,
+        "duree_mois": 24,
+        "anciennete_activite": 15
+      },
+      "probabilite": 0.059242537976244396
+    },
+    {
+      "nom": "profil_risque_eleve",
+      "entree": {
+        "age": 22,
+        "revenu_mensuel": 100000,
+        "montant_credit": 2000000,
+        "duree_mois": 6,
+        "anciennete_activite": 1
+      },
+      "probabilite": 0.9999982284585214
+    },
+    {
+      "nom": "profil_jeune_credit_modeste",
+      "entree": {
+        "age": 24,
+        "revenu_mensuel": 180000,
+        "montant_credit": 600000,
+        "duree_mois": 18,
+        "anciennete_activite": 2
+      },
+      "probabilite": 0.4255338758470497
+    }
+  ],
+  "contrat_reponse_predict": [
+    "alertes",
+    "avertissement",
+    "niveau_risque",
+    "probabilite_defaut",
+    "version_modele"
+  ]
+}
