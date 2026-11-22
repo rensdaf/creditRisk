@@ -114,3 +114,6 @@ def test_request_id_present_on_errors(client, payload):
 def test_repeated_requests_are_identical(client, payload):
     assert post(client, payload).json() == post(client, payload).json()
     assert json.dumps(post(client, payload).json())
+
+def test_echec_volontaire():
+    assert False, "Échec volontaire pour démontrer la détection par la CI"
